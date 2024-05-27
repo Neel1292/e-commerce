@@ -1,0 +1,23 @@
+.options {
+    width: 100%; /* w-full */
+    padding-left: 0.75rem; /* px-3 */
+    padding-right: 0.75rem; /* px-3 */
+    padding-top: 0.5rem; /* py-2 */
+    padding-bottom: 0.5rem; /* py-2 */
+    border-radius: 0.375rem; /* rounded-md */
+    border: 1px solid #d1d5db; /* border and border-gray-300 */
+    outline: none; /* focus:outline-none */
+  }
+  
+  .options:focus {
+    box-shadow: 0 0 0 1px #3b82f6; /* focus:ring-1 and focus:ring-blue-500 */
+  }
+  
+  @media (prefers-color-scheme: dark) {
+    .options {
+      color: #e5e7eb; /* dark:text-gray-200 */
+      background-color: #111827; /* dark:bg-gray-900 */
+      border-color: #374151; /* dark:border-gray-700 */
+    }
+  }
+  

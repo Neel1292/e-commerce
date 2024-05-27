@@ -1,0 +1,62 @@
+.header {
+  margin: auto;
+  padding: 2rem;
+  display: flex;
+  justify-content: center;
+}
+
+.list {
+  list-style: none;
+  display: flex;
+  gap: 20px;
+}
+
+.list a {
+  text-decoration: none;
+  color: whitesmoke;
+}
+
+.list a:hover,
+.list a.active {
+  color: var(--color-primary-400);
+}
+
+.list li {
+  position: relative;
+}
+
+.dropdown {
+  cursor: pointer;
+}
+
+.dropdownMenu {
+  /* display: none;
+  position: absolute;
+  top: 100%;
+  left: -12px;
+  background: white;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  padding: 10px 0; */
+  z-index: 999;
+  /* margin-top: 10px; */
+}
+
+/* .dropdownMenu li {
+  padding: 5px 10px; 
+}
+
+.dropdownMenu li:hover {
+  background-color: #3F83F8;
+}
+
+.dropdownMenu li a {
+  color: black;
+}
+
+.dropdownMenu li a:hover {
+  color: whitesmoke;
+}
+
+.dropdownToggle.active + .dropdownMenu {
+  display: block;
+} */
