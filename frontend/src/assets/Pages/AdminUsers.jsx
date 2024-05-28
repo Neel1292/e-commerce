@@ -79,7 +79,7 @@ export default function AdminUsers() {
             <tbody className="lg:border-gray-300">
               {records.map((user, {status ="Complete", statusClass="bg-blue-600 text-white" }) => (         
                 <AdminUserTable key={user.id} id={user.id} user_name={user.name} email={user.email}
-                  phone={user.phone} address={user.address} status={status}statusClass={statusClass} setShowAddUser={setShowAddUser} setIsDelete={setIsDelete} setEditId={setEditId}/>       
+                  phone={user.phone} address={user.address} role={user.role} status={status} statusClass={statusClass} setShowAddUser={setShowAddUser} setIsDelete={setIsDelete} setEditId={setEditId}/>       
               ))}
             </tbody>
           </table>

@@ -7,16 +7,17 @@ import Corusal from "../components/Corusal";
 
 export default function Home() {
     
-    let items = useSelector((state) => state.items?.item)
+    let items = useSelector((state) => state.items?.item);
+    let images = useSelector((state) => state.banners?.bannerImg);
     const dispatch = useDispatch();
 
     useEffect(() => {
       dispatch(getItemsAsync());
-    }, []);
+    }, [images, items]);
 
   return (
     <>
-      <Corusal/>
+      <Corusal imgSrc={images}/>
 
       <div className="mt-10 pl-10 grid grid-cols-2 gap-1 sm:grid-cols-4 sm:gap-2 lg:mt-5">
         {items.length > 0 && <Products items={items}/> }

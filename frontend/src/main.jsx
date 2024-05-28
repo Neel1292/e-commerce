@@ -7,12 +7,14 @@ import userSlice from './redux/userSlice.jsx';
 import { Provider } from 'react-redux';
 import itemSlice from './redux/itemSlice.jsx';
 import cartSlice from './redux/cartSlice.jsx';
+import bannerSlice from './redux/bannerSlice.jsx';
 
 const store = configureStore({
     reducer: {
         users: userSlice, 
         items: itemSlice,
-        carts: cartSlice
+        carts: cartSlice,
+        banners: bannerSlice
     }
 })
 

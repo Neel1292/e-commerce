@@ -1,7 +1,7 @@
 import { faUserPen, faTrashAlt } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
-export default function AdminUserTable({ id, user_name, email, phone, address, setShowAddUser, setIsDelete, setEditId }) {
+export default function AdminUserTable({ id, user_name, email, phone, address, role, setShowAddUser, setIsDelete, setEditId }) {
 
   function handleDelete() {
     if(confirm("Are you Sure you want to delete this user?")) {
@@ -21,6 +21,9 @@ export default function AdminUserTable({ id, user_name, email, phone, address, s
         </td>
         <td className="whitespace-no-wrap py-4 px-6 text-right text-sm text-gray-600 lg:text-left">
             <h3 className='font-medium'>{address}</h3>
+        </td>
+        <td className="whitespace-no-wrap py-4 px-6 text-right text-sm text-gray-600 lg:text-left">
+            <h3 className='font-medium'>{role}</h3>
         </td>
         <td className="whitespace-no-wrap hidden py-4 text-sm font-normal text-gray-500 sm:px-6 lg:table-cell">
             {/* <div className={`inline-flex items-center rounded-full ${statusClass} py-2 px-3 text-xs`}> */}

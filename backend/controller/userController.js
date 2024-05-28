@@ -138,7 +138,7 @@ exports.deleteUser = async (req, res)=>{
             let { rows, rowCount } = await pool.query("DELETE FROM ecom_users WHERE id = $1 RETURNING id", [req.params.id]);
 
             if (rowCount > 0 ) {
-                res.status(200).send(rows[0]);
+                res.status(200).send(rows);
             } else {
                 res.status(400).json({ error: 'Error while deleting user, try again later' });
             }
