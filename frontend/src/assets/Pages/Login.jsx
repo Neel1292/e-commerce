@@ -4,7 +4,6 @@ import { loginUserAsync } from '../../redux/userSlice';
 import { NavLink, useNavigate } from 'react-router-dom';
 import Loader from '../../utils/Loader';
 import { useEffect, useState } from 'react';
-import getLoginStatus from '../../utils/getLoginStatus';
 
 export default function Login() {
 
