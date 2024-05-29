@@ -3,11 +3,16 @@ import { useDispatch, useSelector } from 'react-redux';
 import { loginUserAsync } from '../../redux/userSlice';
 import { NavLink, useNavigate } from 'react-router-dom';
 import Loader from '../../utils/Loader';
+import { useEffect, useState } from 'react';
+import getLoginStatus from '../../utils/getLoginStatus';
 
 export default function Login() {
 
   const dispatch = useDispatch();
   const navigate = useNavigate()
+  let loginStatus = useSelector((state) => state.users)
+  const [status, setStatus] = useState('idel');
+
 
   const {
     register,
@@ -15,21 +20,23 @@ export default function Login() {
     formState: { errors, isSubmitting },
   } = useForm();
 
+  useEffect(() => {
+    setStatus(loginStatus.status)
+  }, [loginStatus])
 
-  function onSubmit(data) {
-    try {
-      let result = dispatch(loginUserAsync(data));
-      if(result) {
+  async function onSubmit(data) {
+      await dispatch(loginUserAsync(data));
+      console.log(status);
+      if (status == 'success') {
         navigate('/');
+      } else {
+        navigate('/login');
       }
-    } catch (error) {
-      navigate('/login');
-    }
   }
 
   return (
     <>
-    {isSubmitting ? <Loader /> :
+    {(isSubmitting || status === 'loading') ? <Loader /> :
       <div className="min-h-screen flex items-center justify-center w-full dark:bg-gray-950">
         <div className="bg-white dark:bg-gray-900 shadow-md rounded-lg px-8 py-6 max-w-md">
         <h1 className="text-2xl font-bold text-center mb-4 dark:text-gray-200">Welcome Back!</h1>

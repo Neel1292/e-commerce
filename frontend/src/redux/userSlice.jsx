@@ -21,7 +21,7 @@ const userSlice = createSlice({
             state.error = null;
         },
         loginSuccess: (state, action) => {
-            state.status = 'succeeded';
+            state.status = 'success';
             state.user.push(action.payload.user);
             state.token = action.payload.token;
         },
@@ -106,7 +106,6 @@ export const updateUserAsync = (id, user, token) => async dispatch => {
         });
 
         if (response.status === 200) {
-            
             const { user } = response.data;
             dispatch(updateSuccess(user));
 
@@ -128,7 +127,7 @@ export const loginUserAsync = (user) => async dispatch => {
             const { token, user } = response.data;
             localStorage.setItem('token', token);
             localStorage.setItem('user', JSON.stringify(user));
-            return true;
+            dispatch(loginSuccess('Login Success'));
         } else {
             dispatch(loginFailure('Login failed'));
         }
