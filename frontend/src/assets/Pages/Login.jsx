@@ -28,9 +28,6 @@ export default function Login() {
     }
   }, [loginStatus, status])
 
-  // useEffect(() => {
-
-  // }, [status]);
   
   function onSubmit(data) {
     dispatch(loginUserAsync(data));
