@@ -43,7 +43,7 @@ exports.login = async (req, res) => {
         } 
         
         let { rows: results, rowCount } = await pool.query("SELECT * FROM ecom_users WHERE email = $1",[email]);
-        let phone = results[0].phone;
+        let name = results[0].name;
 
         if(rowCount == 0){
             res.status(400).json({"error" : "Invalid email or password"});
@@ -51,9 +51,9 @@ exports.login = async (req, res) => {
             let value = bcrypt.compare(password, results[0].password)
 
             if(!value || role !== results[0].role){
-                res.status(400).json({"error" : "Invalid eamil or password Password"})
+                res.status(400).json({"error" : "Invalid email or password"})
             } else {    
-                const token = generateJWT({email, role, phone});
+                const token = generateJWT({ name, email, role});
                 res.status(200).json({"user": results[0], "token": token})
             }
         }

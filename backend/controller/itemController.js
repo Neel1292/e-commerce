@@ -9,10 +9,6 @@ exports.getAllItems = async(req, res) => {
         res.status(200).json({item: items.rows});
     } catch (err) {
         res.status(500).json({ error: 'Internal Server Error' });
-    } finally {
-        if (client) {
-            client.release();
-        }
     }
 }
 

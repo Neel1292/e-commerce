@@ -11,16 +11,12 @@ export default function MainNavigation() {
   const dispatch = useDispatch();
 
   const [user, setUser] = useState({});
-  let userData = useSelector((state) => state.users);
   
   const [isAdminOpen, setIsAdminOpen] = useState(false);
 
   // Get the total item count from the cart
   const itemCount = useSelector(selectCartItemCount);
   
-  console.log("User", user);
-  console.log("User State ", userData);
-
   const toggleAdminMenu = () => {
     setIsAdminOpen((prevState) => !prevState);
   };

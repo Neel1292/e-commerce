@@ -22,7 +22,7 @@ const userSlice = createSlice({
         },
         loginSuccess: (state, action) => {
             state.status = 'success';
-            state.user.push(action.payload.user);
+            state.user = action.payload.user;
             state.token = action.payload.token;
         },
         loginFailure: (state, action) => {
@@ -30,9 +30,10 @@ const userSlice = createSlice({
             state.error = action.payload;
         },  
         logoutUser: (state) => {
-            localStorage.clear();
+            state.status ='idel';
             state.user = null;
             state.token = null;
+            localStorage.clear();
         },
         getAllUsers: (state, action) => {
             state.allusers = action.payload;
@@ -118,19 +119,15 @@ export const updateUserAsync = (id, user, token) => async dispatch => {
 };
 
 export const loginUserAsync = (user) => async dispatch => {
-    
-    dispatch(loginStart());
-    
+    // debugger
     try {
         const response = await axios.post('https://e-commerce-node-api-nu.vercel.app/user/login', user);
         if (response.status === 200) {
             const { token, user } = response.data;
             localStorage.setItem('token', token);
             localStorage.setItem('user', JSON.stringify(user));
-            dispatch(loginSuccess('Login Success'));
-        } else {
-            dispatch(loginFailure('Login failed'));
-        }
+            dispatch(loginSuccess({user, token}));
+        } 
     } catch (error) {
         dispatch(loginFailure(error.response?.data?.error || 'Error during login'));
     }
