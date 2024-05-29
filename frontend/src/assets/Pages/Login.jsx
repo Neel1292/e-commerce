@@ -8,10 +8,9 @@ import { useEffect, useState } from 'react';
 export default function Login() {
 
   const dispatch = useDispatch();
-  const navigate = useNavigate()
-  let loginStatus = useSelector((state) => state.users)
+  const navigate = useNavigate();
+  let loginStatus = useSelector((state) => state.users);
   const [status, setStatus] = useState('idel');
-
 
   const {
     register,
@@ -20,17 +19,21 @@ export default function Login() {
   } = useForm();
 
   useEffect(() => {
-    setStatus(loginStatus.status)
-  }, [loginStatus])
+    setStatus(loginStatus.status);
+    console.log(status);
+    if (status === 'success') {
+      navigate('/');
+    } else {
+      navigate('/login');
+    }
+  }, [loginStatus, status])
 
-  async function onSubmit(data) {
-      await dispatch(loginUserAsync(data));
-      console.log(status);
-      if (status == 'success') {
-        navigate('/');
-      } else {
-        navigate('/login');
-      }
+  // useEffect(() => {
+
+  // }, [status]);
+  
+  function onSubmit(data) {
+    dispatch(loginUserAsync(data));
   }
 
   return (
