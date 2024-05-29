@@ -20,12 +20,13 @@ export default function Login() {
 
   useEffect(() => {
     setStatus(loginStatus.status);
-    console.log(status);
+   
     if (status === 'success') {
       navigate('/');
     } else {
       navigate('/login');
     }
+    
   }, [loginStatus, status])
 
   
