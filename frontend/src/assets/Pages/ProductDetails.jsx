@@ -20,7 +20,6 @@ export default function ProductDetails() {
     }
 
     useEffect(() => {
-        console.log("Getting data...", id);
         dispatch(getOneItemAsync(id))
     }, [id])  
 
@@ -33,7 +32,7 @@ export default function ProductDetails() {
                             <img className="w-full h-full object-fill" src={`data:image/jpg;base64,${item.item_image}`} alt={`${item.item_name}`} />
                         </div>
 
-                        {user.role === 'user' && 
+                        {user?.role === 'user' || !user && 
 
                             <div className="flex -mx-2 mb-4">
                                 <div onClick={() => handelAdd(item.id)} className="w-full px-2">

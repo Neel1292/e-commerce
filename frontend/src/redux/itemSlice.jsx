@@ -34,7 +34,6 @@ const itemSlice = createSlice({
             state.error = action.payload;
         },
         addItem: (state, action) => {
-            console.log("Adding to Redux")
             let newItem = action.payload;
             let items = state.item;
             let updateItem = [
@@ -44,14 +43,12 @@ const itemSlice = createSlice({
             state.item = updateItem;
         },
         updateItem: (state, action) => {
-            console.log("Updating to Redux")
             let updatedItem = action.payload.item;
             let id = action.payload.id;
             let index = state.item.findIndex(item => item.id === id);
             state.item[index] = updatedItem;
         },
         deleteItem: (state, action) => {
-            console.log("Deleting from Redux")
             let updatedItem = action.payload.item;
             let id = action.payload.id;
             let index = state.item.findIndex(item => item.id === id);
@@ -96,7 +93,6 @@ export const addOneItemAsync = item => async(dispatch) => {
     try{
         const token = getToken();
               
-        console.log("Sending request with header..", item);
         const response = await axios.post('https://e-commerce-node-api-nu.vercel.app/item/add', item, {
             headers: {
                 Authorization: `Bearer ${token}`,
@@ -104,7 +100,6 @@ export const addOneItemAsync = item => async(dispatch) => {
         });
 
         if(response.status === 201) {
-            console.log("response Received");
             dispatch(addItem(response.data.item));
             return true;
         }
@@ -126,7 +121,6 @@ export const updateOneItemAsync = (id, item) => async(dispatch) => {
         });
         
         if(response.status === 200) {
-            console.log("Response Received");
             dispatch(updateItem(response.data.item, id));
         }
     } catch (error) {
@@ -134,25 +128,16 @@ export const updateOneItemAsync = (id, item) => async(dispatch) => {
     }
 }
 
-export const deleteOneItemAsync = (id) => async(dispatch) => {
-
-    console.log("2. Delete Request ", id);
-    
+export const deleteOneItemAsync = (id) => async(dispatch) => {   
     try{
         const token = getToken();
-
-        console.log("3. Sending Delete Request wiht header");
-
         const response = await axios.delete(`https://e-commerce-node-api-nu.vercel.app/item/delete/${id}`, {
             headers: {
                 Authorization: `Bearer ${token}`,
             },
         });
 
-        console.log("4. Deleted Successful ..", response.data.id);
-
         if(response.status === 200) {
-            console.log("Response Received");
             dispatch(deleteItem(response.data.id));
         }
     } catch (error) {

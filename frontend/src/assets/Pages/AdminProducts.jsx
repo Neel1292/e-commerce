@@ -26,7 +26,6 @@ export default function AdminProducts() {
   useEffect(() => {
     dispatch(getItemsAsync());
     if(isDelete) {
-      console.log('1. Dispatching delete');
       dispatch(deleteOneItemAsync(editId))
       setEditId(undefined)
     }

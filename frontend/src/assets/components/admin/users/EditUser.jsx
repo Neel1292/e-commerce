@@ -6,7 +6,6 @@ import Loader from "../../../../utils/Loader";
 
 export default function EditUser({ setShowAddUser, setEditId, id }) {
     
-    console.log(id);
     const dispatch = useDispatch();
 
     const {
@@ -20,7 +19,6 @@ export default function EditUser({ setShowAddUser, setEditId, id }) {
     }, [id])
     
     const user = useSelector((state) => state.users?.oneUser);
-    console.log(user);
     
     function handleUpdateUser(data) {
         dispatch(updateOneUserAsync(id, data));

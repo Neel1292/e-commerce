@@ -118,8 +118,7 @@ exports.addUser = async (req, res)=>{
                         let { rows } = await pool.query(
                             "INSERT INTO ecom_users (name , email, password, phone, address, role) VALUES ($1,$2,$3,$4,$5,$6) RETURNING *", [name, email, hash, phone, address, role]
                         );
-
-                        console.log("User: ", rows)
+                        
                         res.status(200).json({ user: rows })
                     })
                 });

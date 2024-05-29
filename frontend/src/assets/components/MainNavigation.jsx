@@ -42,7 +42,7 @@ export default function MainNavigation() {
               </NavLink>
             </li>
             <li className="font-bold md:mr-12">
-              {user?.role == "admin" ? (
+              {user !== "undefiend" && user?.role == "admin" ? (
                 <div>
                   <button
                     onClick={toggleAdminMenu}
@@ -110,15 +110,6 @@ export default function MainNavigation() {
                 </div>
               ) : (
 
-                // <NavLink
-                //   to="/cart"
-                //   className={({ isActive }) =>
-                //     isActive ? "text-cyan-500" : "text-slate-700"
-                //   }
-                // >
-                //   Cart
-                // </NavLink>
-
                 <div className="relative">
                 <NavLink
                   to="/cart"
@@ -126,7 +117,6 @@ export default function MainNavigation() {
                     isActive ? "text-cyan-500" : "text-slate-700"
                   }
                 >
-                  {/* Cart */}
                   <FontAwesomeIcon icon={faCartShopping} />
                 </NavLink>
                 {itemCount > 0 && (
@@ -138,7 +128,6 @@ export default function MainNavigation() {
               )}
             </li>
             
-            {user?.role == "user" && 
               <li className="font-bold md:mr-12">              
                 <NavLink
                   to="/profile"
@@ -149,7 +138,7 @@ export default function MainNavigation() {
                   Profile
                 </NavLink>
               </li>
-            }
+            
             
             <li className="md:mr-12">
               <NavLink

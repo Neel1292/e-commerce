@@ -2,8 +2,6 @@ const stripe = require("stripe")("sk_test_51PL0vKSB8s66qgzberqTaGTjmtDO4p5hJAoed
 
 exports.checkOut = async (req, res) => {
     const { products } = req.body;
-
-    console.log(products);
     
     const lineItems = products.map((product) => ({
         price_data: {
@@ -18,7 +16,7 @@ exports.checkOut = async (req, res) => {
 
     const session = await stripe.checkout.sessions.create({
         payment_method_types: ["card"],
-        shipping_address_collection: {allowed_countries: ['IN', 'US', 'CA']},
+        shipping_address_collection: {allowed_countries: ['IN', 'US', 'CA', 'GB', 'AU']},
         line_items: lineItems,
         mode: "payment",
         success_url: "http://localhost:5173/success",

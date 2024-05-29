@@ -35,12 +35,10 @@ const cartSlice = createSlice({
         },
         incrementItem: (state, action) => {
             let id = action.payload;
-            console.log(id);
             const item = state.cartItems.find((item) => item.id == id);
             if(item) {
                 item.quantity += 1;
                 state.total += item.price;
-                console.log(JSON.parse(JSON.stringify(state)));
             }
         },        
         decrementItem: (state, action) => {

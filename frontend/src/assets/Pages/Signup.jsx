@@ -19,7 +19,7 @@ export default function Signup() {
 
   function onSubmit(data){
     dispatch(createUserAsync(data))
-    console.log(signupStatus);
+
     if(signupStatus === 'succeeded') {
       navigate('/');
     }

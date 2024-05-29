@@ -15,10 +15,6 @@ export default function AddUser({ setShowAddItem, setShowAddUser }) {
     const dispatch = useDispatch();
 
     function handleAddUser(data) {
-        console.log(data);
-
-        console.log('Sending Request');
-
         dispatch(createOneUserAsync(data)) 
         && setTimeout(() => setShowAddUser((prev) => !prev), 1000);
     }

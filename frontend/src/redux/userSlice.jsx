@@ -143,7 +143,6 @@ export const createUserAsync = (user) => async dispatch => {
         const response = await axios.post('https://e-commerce-node-api-nu.vercel.app/user/signup', user);
         if (response.status === 200) {
             const { token, user } = response.data;
-            console.log(user);
             dispatch(createUser({ token, user }));
         } else {
             dispatch(loginFailure('Login failed'));
@@ -156,7 +155,6 @@ export const createUserAsync = (user) => async dispatch => {
 export const createOneUserAsync = (user) => async dispatch => {
     try {
         let token = getToken();
-        console.log('Sending Request with header');
         const response = await axios.post('https://e-commerce-node-api-nu.vercel.app/user/add', user, {
             headers: {
                 Authorization: `Bearer ${token}`
@@ -195,7 +193,6 @@ export const getUsersAsync = () => async dispatch => {
 export const updateOneUserAsync = (id, user) => async(dispatch) => {
     try{
         const token = getToken();
-        console.log('Sending with headers');
         const response = await axios.post(`https://e-commerce-node-api-nu.vercel.app/user/edit/${id}`, user, {
             headers: {
                 Authorization: `Bearer ${token}`,

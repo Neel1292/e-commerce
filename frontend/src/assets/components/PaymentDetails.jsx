@@ -2,48 +2,63 @@ import getUser from "../../utils/getUser";
 import { loadStripe } from '@stripe/stripe-js';
 import { useSelector } from "react-redux";
 import getToken from "../../utils/getToken";
+import { useNavigate } from "react-router";
+import { useEffect } from "react";
 
 export default function PaymentDetails({total, shipping}) {
 
     const carts = useSelector((state) => state.carts?.cartItems) || [];
+    const navigate = useNavigate();
 
     const token = getToken();
+    let user = [];
+
+    useEffect(() => {
+        user = getUser() || null;
+    }, [])
 
     shipping = total == 0 ? 0 : shipping;
 
     // payment integration
     async function makePayment() {
-        const stripe = await loadStripe("pk_test_51PL0vKSB8s66qgzb05jS33UvndQrSMa2IglMqm0E0EblWo2NWrY8yf09EEwAiHa0wUWlIIjYvEvG4qYqXqeLNJTW00ZHs3oO28");
+    
+        try {
+            if(user) {
+                const stripe = await loadStripe("pk_test_51PL0vKSB8s66qgzb05jS33UvndQrSMa2IglMqm0E0EblWo2NWrY8yf09EEwAiHa0wUWlIIjYvEvG4qYqXqeLNJTW00ZHs3oO28");
 
-        const body = {
-            products: carts
-        }
+                const body = {
+                    products: carts
+                }
 
-        const headers = {
-            'Content-Type': 'application/json',
-            'Authorization': `Bearer ${token}`,
-        }
+                const headers = {
+                    'Content-Type': 'application/json',
+                    'Authorization': `Bearer ${token}`,
+                }
 
-        const response = await fetch("https://e-commerce-node-api-nu.vercel.app/user/checkout", {
-            method: 'POST',
-            headers: headers,
-            body: JSON.stringify(body),
+                const response = await fetch("https://e-commerce-node-api-nu.vercel.app/user/checkout", {
+                    method: 'POST',
+                    headers: headers,
+                    body: JSON.stringify(body),
 
-        });
+                });
 
-        const session = await response.json();
+                const session = await response.json();
 
-        if (!session.id) {
-            alert("Session ID is missing from the response");
-            return;
-        }
+                if (!session.id) {
+                    alert("Session ID is missing from the response");
+                    return;
+                }
 
-        const result = await stripe.redirectToCheckout({
-            sessionId: session.id,
-        });
-
-        if(result.error) {
-            console.log(result.error);
+                if(response.ok) {
+                    await stripe.redirectToCheckout({
+                        sessionId: session.id,
+                    });
+                }
+            } else {
+            navigate('/login');
+            }
+        } catch (err) {
+            alert(err)
         }
     }
     
@@ -69,7 +84,7 @@ export default function PaymentDetails({total, shipping}) {
                 disabled={total === 0}
                 onClick={makePayment}
                 className="group inline-flex items-center justify-center px-6 py-4 text-lg font-semibold transition-all duration-200 ease-in-out focus:shadow
-                mt-4 mb-8 w-full rounded-md bg-cyan-500 disabled:bg-blue-400 hover:bg-cyan-70 text-white"
+                my-4 w-full rounded-md bg-cyan-500 disabled:bg-blue-400 hover:bg-cyan-70 text-white"
       >
                 Checkout
             <svg xmlns="http://www.w3.org/2000/svg" className="ml-4 h-6 w-6 transition-all" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2">

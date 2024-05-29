@@ -13,7 +13,7 @@ export default function Home() {
 
     useEffect(() => {
       dispatch(getItemsAsync());
-    }, [images, items]);
+    }, []);
 
   return (
     <>
