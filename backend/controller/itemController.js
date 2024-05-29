@@ -1,8 +1,19 @@
 const pool = require('../db.js');
 
+let client;
+
 exports.getAllItems = async(req, res) => {
-    let items = await pool.query("SELECT id, item_name, item_description, item_price, encode(item_image, 'base64') AS item_image, created_at, seller_name FROM items");
-    res.status(200).json({item: items.rows});
+    try {
+        client = await pool.connect();
+        let items = await pool.query("SELECT id, item_name, item_description, item_price, encode(item_image, 'base64') AS item_image, created_at, seller_name FROM items");
+        res.status(200).json({item: items.rows});
+    } catch (err) {
+        res.status(500).json({ error: 'Internal Server Error' });
+    } finally {
+        if (client) {
+            client.release();
+        }
+    }
 }
 
 exports.getOneItem = async(req, res) => {

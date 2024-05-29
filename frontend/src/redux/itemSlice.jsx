@@ -66,6 +66,8 @@ export const getItemsAsync = () => async dispatch => {
         const response = await axios.get('https://e-commerce-node-api-nu.vercel.app/item');
         if (response.status === 200) {
             dispatch(getItems(response.data.item));
+        } else {
+            throw new Error(response.error);
         }
     } catch (error) {
         dispatch(getItemsFailure(error.response?.data?.error || 'Error during fetching items'));
