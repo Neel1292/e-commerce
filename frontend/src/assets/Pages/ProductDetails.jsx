@@ -10,10 +10,7 @@ export default function ProductDetails() {
     let user = getUser();
 
     const dispatch = useDispatch();
-    const item = useSelector((state) => {
-        const oneitem = state.items.oneItem
-        return oneitem.length !== 0 ? oneitem[0] : []
-    })
+    const item = useSelector((state) => state.items?.oneItem) || [];
 
     function handelAdd(id) {
         dispatch(addItemCart({id, item}))
