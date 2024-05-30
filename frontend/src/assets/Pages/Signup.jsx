@@ -4,12 +4,14 @@ import { NavLink, useNavigate } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { createUserAsync } from '../../redux/userSlice';
 import Loader from '../../utils/Loader';
+import { useEffect, useState } from 'react';
 
 export default function Signup() {
 
   const dispatch = useDispatch();
   const navigate = useNavigate();
-  let signupStatus = useSelector((state) => state.users?.status) || 'idle';
+  let signupStatus = useSelector((state) => state.users);
+  const [status, setStatus] = useState('idel');
 
   const {
     register,
@@ -17,12 +19,20 @@ export default function Signup() {
     formState: { errors, isSubmitting },
   } = useForm();
 
+  useEffect(() => {
+    setStatus(signupStatus.status);
+        console.log(status);
+    if(status === 'succeeded') {
+      navigate('/');
+      // reset(); 
+    } else {
+      navigate('/signup');
+    }
+    
+  }, [signupStatus, status])
+
   function onSubmit(data){
     dispatch(createUserAsync(data))
-
-    if(signupStatus === 'succeeded') {
-      navigate('/');
-    }
   }
 
   return (
@@ -76,12 +86,12 @@ export default function Signup() {
         </div>
         {errors.confirmPassword && <span className='text-red-600 text-sm'>{errors.confirmPassword.message}</span>}
 
-        <button type="submit" className="bg-blue-500 hover:bg-blue-600 text-white font-medium py-2 px-4 rounded-md shadow-sm" disabled={isSubmitting}>Register</button>
+        <button type="submit" className="bg-blue-500 hover:bg-blue-600 text-white font-medium py-2 px-4 rounded-md shadow-sm" disabled={isSubmitting}>{isSubmitting ? 'Submiting...' : 'Register'}</button>
       </form>
 
       <div className  ="mt-4 text-center">
         <span className="text-sm text-gray-500 dark:text-gray-300">Already have an account? </span>
-        <NavLink to="/" className="text-blue-500 hover:text-blue-600">Login</NavLink>
+        <NavLink to="/login" className="text-blue-500 hover:text-blue-600">Login</NavLink>
       </div>
     </div>
   </>

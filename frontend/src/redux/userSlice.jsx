@@ -44,9 +44,8 @@ const userSlice = createSlice({
         },
         createUser: (state, action) => {
             state.status = 'succeeded';
-            localStorage.setItem('token', action.payload.token)
-            localStorage.setItem('user', action.payload.user)
-            state.user.push(action.payload.user);
+            console.log(state.status);
+            state.user = action.payload.user;
             state.token = action.payload.token;
         },
         updateUser: (state, action) => {
@@ -100,7 +99,7 @@ const userSlice = createSlice({
 export const updateUserAsync = (id, user, token) => async dispatch => {
     try {
         
-        const response = await axios.post(`https://e-commerce-node-api-nu.vercel.app/user/edit/${id}`, user, {
+        const response = await axios.post(`http://localhost:5000/user/edit/${id}`, user, {
             headers: {
                 Authorization: `Bearer ${token}`
             }
@@ -119,9 +118,8 @@ export const updateUserAsync = (id, user, token) => async dispatch => {
 };
 
 export const loginUserAsync = (user) => async dispatch => {
-    // debugger
     try {
-        const response = await axios.post('https://e-commerce-node-api-nu.vercel.app/user/login', user);
+        const response = await axios.post('http://localhost:5000/user/login', user);
         if (response.status === 200) {
             const { token, user } = response.data;
             localStorage.setItem('token', token);
@@ -134,11 +132,12 @@ export const loginUserAsync = (user) => async dispatch => {
 };
 
 export const createUserAsync = (user) => async dispatch => {
-    
     try {    
-        const response = await axios.post('https://e-commerce-node-api-nu.vercel.app/user/signup', user);
+        const response = await axios.post('http://localhost:5000/user/signup', user);
         if (response.status === 200) {
             const { token, user } = response.data;
+            localStorage.setItem('token', token);
+            localStorage.setItem('user', JSON.stringify(user));
             dispatch(createUser({ token, user }));
         } else {
             dispatch(loginFailure('Login failed'));
@@ -151,7 +150,7 @@ export const createUserAsync = (user) => async dispatch => {
 export const createOneUserAsync = (user) => async dispatch => {
     try {
         let token = getToken();
-        const response = await axios.post('https://e-commerce-node-api-nu.vercel.app/user/add', user, {
+        const response = await axios.post('http://localhost:5000/user/add', user, {
             headers: {
                 Authorization: `Bearer ${token}`
             }
@@ -170,7 +169,7 @@ export const getUsersAsync = () => async dispatch => {
     
     try {   
         let token = getToken();
-        const response = await axios.get('https://e-commerce-node-api-nu.vercel.app/user/all', {
+        const response = await axios.get('http://localhost:5000/user/all', {
             headers: {
                 Authorization: `Bearer ${token}`
             }
@@ -189,7 +188,7 @@ export const getUsersAsync = () => async dispatch => {
 export const updateOneUserAsync = (id, user) => async(dispatch) => {
     try{
         const token = getToken();
-        const response = await axios.post(`https://e-commerce-node-api-nu.vercel.app/user/edit/${id}`, user, {
+        const response = await axios.post(`http://localhost:5000/user/edit/${id}`, user, {
             headers: {
                 Authorization: `Bearer ${token}`,
             },
@@ -207,7 +206,7 @@ export const deleteOneUserAsync = (id) => async(dispatch) => {
         
     try{
         const token = getToken();
-        const response = await axios.delete(`https://e-commerce-node-api-nu.vercel.app/user/delete/${id}`, {
+        const response = await axios.delete(`http://localhost:5000/user/delete/${id}`, {
             headers: {
                 Authorization: `Bearer ${token}`,
             },

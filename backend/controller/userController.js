@@ -12,21 +12,19 @@ exports.signup = async (req, res)=>{
         
         let { rowCount } = await pool.query("SELECT * FROM ecom_users WHERE email = $1", [email]);
 
-        if (rowCount.length > 0 ) {
+        if (rowCount > 0 ) {
             return res.status(400).json({ error: 'This email already exists, try another' });
         } else {
             bcrypt.genSalt(12, (err, salt) => {
                 bcrypt.hash(password, salt, async (err, hash) => {
-                    let {rows } = await pool.query(
-                        "INSERT INTO ecom_users (name , email, password, phone, address, role) VALUES ($1,$2,$3,$4,$5,$6) RETURNING *", [name, email, hash, phone, address, role]
+                    let { rows } = await pool.query(
+                        "INSERT INTO ecom_users (name , email, password, phone, address, role) VALUES ($1,$2, $3, $4, $5, $6) RETURNING *", [name, email, hash, phone, address, role]
                     );
 
                     const token = generateJWT({ name, email, role });
                     res.status(200).json({user: rows[0], "token": token});
                 })
             });
-
-
         }
     }
      catch (error) {
