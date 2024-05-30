@@ -1,4 +1,6 @@
 const stripe = require("stripe")("sk_test_51PL0vKSB8s66qgzberqTaGTjmtDO4p5hJAoedqskGwShLJk9TwpvVrfV8lUhj7aQ53vOLGnAMTHQLv0ntxvnWill00pU05Zga8")
+const dotenv = require('dotenv');
+dotenv.config();
 
 exports.checkOut = async (req, res) => {
     const { products } = req.body;
@@ -19,8 +21,8 @@ exports.checkOut = async (req, res) => {
         shipping_address_collection: {allowed_countries: ['IN', 'US', 'CA', 'GB', 'AU']},
         line_items: lineItems,
         mode: "payment",
-        success_url: "https://e-commerce-nu-brown.vercel.app/success",
-        cancel_url:  "https://e-commerce-nu-brown.vercel.app/cancel"
+        success_url: `${process.env.FRONTEND_BASE_URL_PRODUCTION}/success`,
+        cancel_url:  `${process.env.FRONTEND_BASE_URL_PRODUCTION}/cancel`
     });
 
     res.status(201).json({ id: session.id });

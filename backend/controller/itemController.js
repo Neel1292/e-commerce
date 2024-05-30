@@ -1,7 +1,5 @@
 const pool = require('../db.js');
 
-let client;
-
 exports.getAllItems = async(req, res) => {
     try {
         client = await pool.connect();
