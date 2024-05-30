@@ -1,11 +1,9 @@
 import { useForm } from "react-hook-form"
 import { useDispatch } from "react-redux";
-import { addOneItemAsync } from "../../../../redux/itemSlice";
 import Loader from "../../../../utils/Loader";
 import { createOneUserAsync } from "../../../../redux/userSlice";
-import { toast } from "react-toastify";
 
-export default function AddUser({ setShowAddItem, setShowAddUser }) {
+export default function AddUser({ setShowAddUser }) {
 
     const {
         register,

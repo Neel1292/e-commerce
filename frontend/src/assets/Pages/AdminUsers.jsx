@@ -1,13 +1,12 @@
+import { useEffect, useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faUserPlus } from '@fortawesome/free-solid-svg-icons';
-import { useDispatch, useSelector } from 'react-redux';
-import { useEffect, useState } from 'react';
 import { deleteOneUserAsync, getUsersAsync } from '../../redux/userSlice';
 import AdminUserTable from '../components/admin/users/AdminUserTable';
 import EditUser from '../components/admin/users/EditUser';
 import AddUser from '../components/admin/users/AddUser';
 import Loader from '../../utils/Loader';
-import { toast } from 'react-toastify';
 
 export default function AdminUsers() {
 

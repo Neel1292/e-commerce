@@ -90,10 +90,10 @@ export default function UserProfile() {
                     </div>
                 </form>
             </div> 
-            : <div className="my-4 max-w-screen-md border px-4 shadow-xl sm:mx-4 sm:rounded-xl sm:px-4 sm:py-4 md:mx-auto flex items-center justify-center min-h-[630px]">
+            : <div className="my-4 max-w-screen-md border px-4 shadow-xl sm:mx-4 sm:rounded-xl sm:px-4 sm:py-4 md:mx-auto flex items-center justify-center min-h-[620px]">
             <NavLink to='/login' className='text-xl text-red-500 mt-4'>
             <FontAwesomeIcon icon={faUser}/> <span>Please Login to view details</span></NavLink></div>
-        }
+        }   
     </>
   )
 }
