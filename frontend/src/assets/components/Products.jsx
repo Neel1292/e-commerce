@@ -1,5 +1,5 @@
     import { NavLink } from "react-router-dom";
-    import { useDispatch, useSelector } from "react-redux";
+    import { useDispatch } from "react-redux";
     import { addItemCart } from "../../redux/cartSlice";
     import getUser from "../../utils/getUser";
 
