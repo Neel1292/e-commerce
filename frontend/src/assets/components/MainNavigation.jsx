@@ -126,7 +126,7 @@ export default function MainNavigation() {
                   <FontAwesomeIcon icon={faCartShopping} />
                 </NavLink>
                 {itemCount > 0 && (
-                  <span className="absolute top-[-6px] right-[-7px] inline-flex items-center justify-center px-1 py-0.5 text-[8px] font-normal leading-none text-red-100 bg-red-600 rounded-full z-50">
+                  <span className="absolute top-[-5px] right-[-10px] inline-flex items-center justify-center px-1 py-0.5 text-[10px] font-normal leading-none text-red-100 bg-red-600 rounded-full z-50">
                     {itemCount}
                   </span>
                 )}
