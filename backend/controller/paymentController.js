@@ -19,8 +19,8 @@ exports.checkOut = async (req, res) => {
         shipping_address_collection: {allowed_countries: ['IN', 'US', 'CA', 'GB', 'AU']},
         line_items: lineItems,
         mode: "payment",
-        success_url: "http://localhost:5173/success/payment",
-        cancel_url:  "http://localhost:5173/cancel/payment"
+        success_url: "https://e-commerce-nu-brown.vercel.app/success/payment",
+        cancel_url:  "https://e-commerce-nu-brown.vercel.app/cancel/payment"
     });
 
     res.status(201).json({ id: session.id });

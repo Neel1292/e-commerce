@@ -7,6 +7,7 @@ import AdminUserTable from '../components/admin/users/AdminUserTable';
 import EditUser from '../components/admin/users/EditUser';
 import AddUser from '../components/admin/users/AddUser';
 import Loader from '../../utils/Loader';
+import { toast } from 'react-toastify';
 
 export default function AdminUsers() {
 
@@ -27,14 +28,15 @@ export default function AdminUsers() {
   useEffect(() => {
     dispatch(getUsersAsync());
     if(isDelete) {
-      dispatch(deleteOneUserAsync(editId))
-      setEditId(undefined)
+      dispatch(deleteOneUserAsync(editId));
+      setEditId(undefined);
+
     }
   }, [isDelete, editId]);
 
   return (
     <>
-      {(users.length === 0 || !users) && <Loader />}
+      {(users.length === 0 || !users) ? <Loader /> :
       <div className="relative w-screen">
 
         {showAddUser && (
@@ -124,6 +126,7 @@ export default function AdminUsers() {
           </div>
         </div>
       </div>
+    }
     </>
   );
 

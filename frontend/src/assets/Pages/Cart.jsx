@@ -5,7 +5,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCartShopping } from '@fortawesome/free-solid-svg-icons';
 
 
-export default function Cart() {
+    export default function Cart() {
     const cart =  useSelector((state) => state.carts?.cartItems) || [];
     const total = useSelector((state) => {
         const itemTotal = state.carts.total;

@@ -5,6 +5,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { createUserAsync } from '../../redux/userSlice';
 import Loader from '../../utils/Loader';
 import { useEffect, useState } from 'react';
+import { toast } from 'react-toastify';
 
 export default function Signup() {
 
@@ -21,14 +22,12 @@ export default function Signup() {
 
   useEffect(() => {
     setStatus(signupStatus.status);
-        console.log(status);
     if(status === 'succeeded') {
-      navigate('/');
-      // reset(); 
+      navigate('/'); 
+      toast.success('Account Created Successfully');
     } else {
       navigate('/signup');
     }
-    
   }, [signupStatus, status])
 
   function onSubmit(data){
