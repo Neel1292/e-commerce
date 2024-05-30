@@ -35,7 +35,7 @@ export default function PaymentDetails({total, shipping}) {
                     'Authorization': `Bearer ${token}`,
                 }
 
-                const response = await fetch("http://localhost:5000/user/checkout", {
+                const response = await fetch("https://e-commerce-node-api-nu.vercel.app/user/checkout", {
                     method: 'POST',
                     headers: headers,
                     body: JSON.stringify(body),

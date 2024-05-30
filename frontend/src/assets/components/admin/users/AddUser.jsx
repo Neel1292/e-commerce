@@ -3,6 +3,7 @@ import { useDispatch } from "react-redux";
 import { addOneItemAsync } from "../../../../redux/itemSlice";
 import Loader from "../../../../utils/Loader";
 import { createOneUserAsync } from "../../../../redux/userSlice";
+import { toast } from "react-toastify";
 
 export default function AddUser({ setShowAddItem, setShowAddUser }) {
 
@@ -16,7 +17,7 @@ export default function AddUser({ setShowAddItem, setShowAddUser }) {
 
     function handleAddUser(data) {
         dispatch(createOneUserAsync(data)) 
-        && setTimeout(() => setShowAddUser((prev) => !prev), 1000);
+        && setTimeout(() => setShowAddUser((prev) => !prev), 1000); 
     }
 
   return (

@@ -1,4 +1,5 @@
-import React from 'react'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faUser } from '@fortawesome/free-solid-svg-icons';
 import getUser from '../../utils/getUser'
 import { useNavigate } from 'react-router';
 import { useForm } from 'react-hook-form';
@@ -6,6 +7,7 @@ import Loader from '../../utils/Loader';
 import { updateUserAsync } from '../../redux/userSlice';
 import { useDispatch } from 'react-redux';
 import getToken from '../../utils/getToken';
+import { NavLink } from 'react-router-dom';
 
 export default function UserProfile() {
     const navigate = useNavigate();
@@ -34,7 +36,8 @@ export default function UserProfile() {
 
   return (
     <>
-        {isSubmitting ? <Loader /> :
+        {isSubmitting ? <Loader /> : user ?
+            
             <div className="my-4 max-w-screen-md border px-4 shadow-xl sm:mx-4 sm:rounded-xl sm:px-4 sm:py-4 md:mx-auto">
                 <div className="flex flex-col border-b py-4 sm:flex-row sm:items-start">
                     <div className="shrink-0 mr-auto sm:py-3">
@@ -86,7 +89,10 @@ export default function UserProfile() {
                         </button>
                     </div>
                 </form>
-            </div>
+            </div> 
+            : <div className="my-4 max-w-screen-md border px-4 shadow-xl sm:mx-4 sm:rounded-xl sm:px-4 sm:py-4 md:mx-auto flex items-center justify-center min-h-[630px]">
+            <NavLink to='/login' className='text-xl text-red-500 mt-4'>
+            <FontAwesomeIcon icon={faUser}/> <span>Please Login to view details</span></NavLink></div>
         }
     </>
   )
