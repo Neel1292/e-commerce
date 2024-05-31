@@ -62,7 +62,6 @@ const itemSlice = createSlice({
 
 export const getItemsAsync = () => async dispatch => {
     try {
-        const token = getToken();
         const response = await axios.get(`${process.env.BACKEND_URL_PRODUCTION}/item`);
         if (response.status === 200) {
             dispatch(getItems(response.data.item));
