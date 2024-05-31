@@ -60,10 +60,11 @@ const itemSlice = createSlice({
     }
 })
 
-export const getItemsAsync = () => async dispatch => {
+export const getItemsAsync = () => async (dispatch) => {
     try {
         const response = await axios.get(`${import.meta.env.VITE_BACKEND_URL_PRODUCTION}/item`);
         if (response.status === 200) {
+
             dispatch(getItems(response.data.item));
         } else {
             throw new Error(response.error);
