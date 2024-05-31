@@ -8,6 +8,7 @@ import { Provider } from 'react-redux';
 import itemSlice from './redux/itemSlice.jsx';
 import cartSlice from './redux/cartSlice.jsx';
 import bannerSlice from './redux/bannerSlice.jsx';
+import { SpeedInsights } from "@vercel/speed-insights/react"
 
 const store = configureStore({
     reducer: {
@@ -21,5 +22,6 @@ const store = configureStore({
 ReactDOM.createRoot(document.getElementById('root')).render(
     <Provider store={store}>
         <App />
+        <SpeedInsights />
     </Provider>
 )
