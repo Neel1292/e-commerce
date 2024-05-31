@@ -37,7 +37,7 @@ export default function PaymentDetails({total, shipping}) {
                     'Authorization': `Bearer ${token}`,
                 }
 
-                const response = await fetch(`${process.env.BACKEND_URL_PRODUCTION}/user/checkout`, {
+                const response = await fetch(`${import.meta.env.VITE_BACKEND_URL_PRODUCTION}/user/checkout`, {
                     method: 'POST',
                     headers: headers,
                     body: JSON.stringify(body),
