@@ -112,8 +112,7 @@ export const addOneItemAsync = item => async(dispatch) => {
     }
 }
 
-export const updateOneItemAsync = (id, item) => async(dispatch) => {
-    
+export const updateOneItemAsync = (id, item) => async(dispatch) => { 
     try{
         const token = getToken();
         const response = await axios.post(`${process.env.BACKEND_URL_PRODUCTION}/item/edit/${id}`, item, {

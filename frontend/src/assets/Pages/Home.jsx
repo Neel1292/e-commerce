@@ -5,16 +5,15 @@ import Products from "../components/Products";
 import Corusal from "../components/Corusal";
 import Loader from "../../utils/Loader";
 
-
 export default function Home() {
-    
-    let items = useSelector((state) => state.items?.item);
-    let images = useSelector((state) => state.banners?.bannerImg);
-    const dispatch = useDispatch();
 
-    useEffect(() => {
-      dispatch(getItemsAsync());
-    }, []);
+  let items = useSelector((state) => state.items?.item);
+  let images = useSelector((state) => state.banners?.bannerImg);
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(getItemsAsync());
+  }, []);
 
   return (
     <>
