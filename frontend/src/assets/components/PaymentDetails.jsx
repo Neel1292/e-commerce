@@ -21,7 +21,6 @@ export default function PaymentDetails({total, shipping}) {
 
     // payment integration
     async function makePayment() {
-    
         try {
             if(user) {
                 const stripe = await loadStripe("pk_test_51PL0vKSB8s66qgzb05jS33UvndQrSMa2IglMqm0E0EblWo2NWrY8yf09EEwAiHa0wUWlIIjYvEvG4qYqXqeLNJTW00ZHs3oO28");
