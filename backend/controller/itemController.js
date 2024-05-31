@@ -2,7 +2,6 @@ const pool = require('../db.js');
 
 exports.getAllItems = async(req, res) => {
     try {
-        client = await pool.connect();
         let items = await pool.query("SELECT id, item_name, item_description, item_price, encode(item_image, 'base64') AS item_image, created_at, seller_name FROM items");
         res.status(200).json({item: items.rows});
     } catch (err) {
