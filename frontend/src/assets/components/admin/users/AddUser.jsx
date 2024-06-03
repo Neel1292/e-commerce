@@ -21,7 +21,7 @@ export default function AddUser({ setShowAddUser }) {
   return (
     <>
     {isSubmitting && <Loader/>}
-    <div className=" absolute w-full bg-white left-[25%] my-4 max-w-screen-md border px-4 shadow-xl sm:mx-4 sm:rounded-xl sm:px-10 sm:py-2 md:mx-auto">
+    <div className=" absolute w-full bg-white left-[25%] my-4 max-w-screen-md border px-4 shadow-xl sm:mx-4 sm:rounded-xl sm:px-10 sm:py-2 md:mx-auto add-user">
         <div className="flex flex-col border-b py-3 sm:flex-row sm:items-start">
             <div className="shrink-0 mr-auto sm:py-1">
             <p className="font-medium">New User</p>
@@ -30,7 +30,7 @@ export default function AddUser({ setShowAddUser }) {
             <button onClick={() => setShowAddUser((prevItem) => !prevItem)} className="mr-2 hidden rounded-lg border-2 px-4 py-2 font-medium text-gray-500 sm:inline focus:outline-none focus:ring hover:bg-gray-200">Cancel</button>
             
         </div>
-        <form onSubmit={handleSubmit(handleAddUser)} action="/admin/users">
+        <form onSubmit={handleSubmit(handleAddUser)} action="/admin/users"  className="user-form-responsive">
 
             <div className="flex flex-col gap-4 border-b py-4 sm:flex-row">
                 <label htmlFor="item_name" className="shrink-0 w-32 font-medium">User Name</label>
@@ -106,11 +106,12 @@ export default function AddUser({ setShowAddUser }) {
             <div className="flex flex-col gap-4 border-t pt-2 sm:flex-row">
                 <button 
                     type="submit" 
-                    className="hidden rounded-lg border-2 border-transparent bg-cyan-600 px-4 py-2 font-medium text-white sm:inline focus:outline-none focus:ring hover:bg-cyan-700"
+                    className="hidden rounded-lg border-2 border-transparent bg-cyan-600 px-4 py-2 font-medium text-white sm:inline focus:outline-none focus:ring hover:bg-cyan-700 user-submit"
                     disabled={isSubmitting}
                 >
                     Submit
                 </button>
+                <button onClick={() => setShowAddUser((prevItem) => !prevItem)} className="mr-2 hidden rounded-lg border-2 px-4 py-2 font-medium text-gray-500 focus:outline-none focus:ring hover:bg-gray-200 responsive-button-user">Cancel</button>
             </div>
         </form>
     </div>

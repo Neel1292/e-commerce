@@ -50,7 +50,9 @@ export default function AdminUsers() {
           </div>
         )}
 
-        <div className={`relative mx-auto mt-8 max-w-screen-lg px-2 ${showAddUser ? 'pointer-events-none' : ''}`}>
+        <div className='hidden text-red-500 text-center text-md screen-text'>Please switch to desktop for better view.</div>
+
+        <div className={`relative mx-auto mt-8 max-w-screen-lg px-2 ${showAddUser ? 'pointer-events-none' : ''}  md:px-6`}>
           <div className="sm:flex sm:items-center sm:justify-between flex-col sm:flex-row">
             <p className="flex-1 text-base font-bold text-gray-900">All Users </p>
             <div className="mt-4 sm:mt-0">
@@ -70,23 +72,26 @@ export default function AdminUsers() {
           </div>
 
           <div className="mt-6 overflow-hidden rounded-xl border shadow">
-            <table className="min-w-full border-separate border-spacing-y-2 border-spacing-x-2">
-              <thead className="hidden border-b lg:table-header-group">
-                <tr>
-                  <td width="10%" className="whitespace-normal py-4 text-sm font-medium text-gray-500 sm:px-6">User Name</td>
-                  <td className="whitespace-normal py-4 text-sm font-medium text-gray-500 sm:px-6">Email</td>
-                  <td className="whitespace-normal py-4 text-sm font-medium text-gray-500 sm:px-6">Phone</td>
-                  <td width="50%" className="whitespace-normal py-4 text-sm font-medium text-gray-500 sm:px-6">Address</td>
-                  <td className="whitespace-normal py-4 text-sm font-medium text-gray-500 sm:px-6">Role</td>
-                </tr>
-              </thead>
-              <tbody className="lg:border-gray-300">
-                {records.map((user, {status ="Complete", statusClass="bg-blue-600 text-white" }) => (         
-                  <AdminUserTable key={user.id} id={user.id} user_name={user.name} email={user.email}
-                    phone={user.phone} address={user.address} role={user.role} status={status} statusClass={statusClass} setShowAddUser={setShowAddUser} setIsDelete={setIsDelete} setEditId={setEditId}/>       
-                ))}
-              </tbody>
-            </table>
+            <div className="table-responsive">
+              <table className="min-w-full border-separate border-spacing-y-2 border-spacing-x-2 sm:table-auto">
+                <thead className="hidden border-b lg:table-header-group">
+                  <tr>
+                    <td width="10%" className="whitespace-normal py-4 text-sm font-medium text-gray-500 sm:px-6">User Name</td>
+                    <td className="whitespace-normal py-4 text-sm font-medium text-gray-500 sm:px-6">Email</td>
+                    <td className="whitespace-normal py-4 text-sm font-medium text-gray-500 sm:px-6">Phone</td>
+                    <td width="50%" className="whitespace-normal py-4 text-sm font-medium text-gray-500 sm:px-6">Address</td>
+                    <td className="whitespace-normal py-4 text-sm font-medium text-gray-500 sm:px-6">Role</td>
+                    <td className="whitespace-normal py-4 text-sm font-medium text-gray-500 sm:px-6">Actions</td>
+                  </tr>
+                </thead>
+                <tbody className="lg:border-gray-300">
+                  {records.map((user, {status ="Complete", statusClass="bg-blue-600 text-white" }) => (         
+                    <AdminUserTable key={user.id} id={user.id} user_name={user.name} email={user.email}
+                      phone={user.phone} address={user.address} role={user.role} status={status} statusClass={statusClass} setShowAddUser={setShowAddUser} setIsDelete={setIsDelete} setEditId={setEditId}/>       
+                  ))}
+                </tbody>
+              </table>
+            </div>
             <div className="flex justify-center my-2 py-2">
               <ul className="inline-flex items-center space-x-1">
                 <li className='page-item'>

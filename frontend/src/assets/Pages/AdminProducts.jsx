@@ -52,7 +52,9 @@ export default function AdminProducts() {
             </div>
           )}
 
-          <div className={`relative mx-auto mt-8 max-w-screen-lg px-2 ${showAddItem ? 'pointer-events-none' : ''}`}>
+          <div className='hidden text-red-500 text-center text-md screen-text'>Please switch to desktop for better view.</div>
+
+          <div className={`relative mx-auto mt-8 max-w-screen-lg px-2 ${showAddItem ? 'pointer-events-none' : ''} max-[991px]:px-6`}>
             <div className="sm:flex sm:items-center sm:justify-between flex-col sm:flex-row">
               <p className="flex-1 text-base font-bold text-gray-900">Latest Orders </p>
               <div className="mt-4 sm:mt-0">
@@ -71,8 +73,8 @@ export default function AdminProducts() {
               </div>
             </div>
 
-            <div className="mt-6 overflow-hidden rounded-xl border shadow">
-              <table className="min-w-full border-separate border-spacing-y-2 border-spacing-x-2">
+            <div className="mt-6 overflow-hidden rounded-xl border shadow ">
+              <table className="min-w-full border-separate border-spacing-y-2 border-spacing-x-2 sm:table-auto">
                 <thead className="hidden border-b lg:table-header-group">
                   <tr>
                     <td width="50%" className="whitespace-normal py-4 text-sm font-medium text-gray-500 sm:px-6">Product Name</td>
