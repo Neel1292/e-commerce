@@ -16,7 +16,7 @@ export default function Carousel({ imgSrc }) {
   return (
     <Swiper
         modules={[Navigation, Pagination, Scrollbar, Autoplay, EffectFade]}
-        navigation
+        // navigation
         autoplay={{ delay: 2000 }}
         pagination={{ clickable: true }}
         scrollbar={{ draggable: true }}

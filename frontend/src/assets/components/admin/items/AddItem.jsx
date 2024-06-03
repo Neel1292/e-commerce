@@ -24,16 +24,16 @@ export default function AddItem({ setShowAddItem }) {
 
   return (
     <>
-    <div className=" absolute bg-white left-[31%] my-4 max-w-screen-md border px-4 shadow-xl sm:mx-4 sm:rounded-xl sm:px-6 sm:py-2 md:mx-auto">
+    <div className=" absolute bg-white left-[31%] my-4 max-w-screen-md border px-4 shadow-xl sm:mx-4 sm:rounded-xl sm:px-6 sm:py-2 md:mx-auto add-item">
         <div className="flex flex-col border-b py-3 sm:flex-row sm:items-start">
             <div className="shrink-0 mr-auto sm:py-1">
             <p className="font-medium">Add New Product</p>
             <p className="text-sm text-gray-600">Add product details</p>
             </div>
-            <button onClick={() => setShowAddItem((prevItem) => !prevItem)} className="mr-2 hidden rounded-lg border-2 px-4 py-2 font-medium text-gray-500 sm:inline focus:outline-none focus:ring hover:bg-gray-200">Cancel</button>
+            <button onClick={() => setShowAddItem((prevItem) => !prevItem)} className="hidden mr-2 rounded-lg border-2 px-4 py-2 font-medium text-gray-500 sm:inline focus:outline-none focus:ring hover:bg-gray-200">Cancel</button>
             
         </div>
-        <form onSubmit={handleSubmit(handleAddProduct)} action="/admin/products" method="post" encType="multipart/form-data">
+        <form onSubmit={handleSubmit(handleAddProduct)} action="/admin/products" method="post" encType="multipart/form-data" className="form-responsive">
 
             <div className="flex flex-col gap-4 border-b py-4 sm:flex-row">
                 <label htmlFor="item_name" className="shrink-0 w-32 font-medium">Product Name</label>
@@ -88,11 +88,12 @@ export default function AddItem({ setShowAddItem }) {
             <div className="flex flex-col gap-4 border-t pt-2 sm:flex-row">
                 <button 
                     type="submit" 
-                    className="hidden rounded-lg border-2 border-transparent bg-cyan-600 px-4 py-2 font-medium text-white sm:inline focus:outline-none focus:ring hover:bg-cyan-700"
+                    className="rounded-lg border-2 border-transparent bg-cyan-600 px-4 py-2 font-medium text-white sm:inline focus:outline-none focus:ring hover:bg-cyan-700"
                     disabled={isSubmitting}
                 >
                     Save
                 </button>
+                <button onClick={() => setShowAddItem((prevItem) => !prevItem)} className="hidden mr-2 rounded-lg border-2 px-4 py-2 font-medium text-gray-500 focus:outline-none focus:ring hover:bg-gray-200 responsive-button">Cancel</button>
             </div>
         </form>
     </div>

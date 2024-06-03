@@ -1,24 +1,23 @@
-    import { NavLink } from "react-router-dom";
-    import { useDispatch } from "react-redux";
-    import { addItemCart } from "../../redux/cartSlice";
-    import getUser from "../../utils/getUser";
+import { NavLink } from "react-router-dom";
+import { useDispatch } from "react-redux";
+import { addItemCart } from "../../redux/cartSlice";
+import getUser from "../../utils/getUser";
 
-    export default function Products({ items }) {
+export default function Products({ items }) {
 
-        const dispatch = useDispatch()
-        let user = getUser() || null;
- 
+    const dispatch = useDispatch()
+    let user = getUser() || null;
 
-        function handelAdd(id, item) {
-            dispatch(addItemCart({id, item}))
-        }
+    function handelAdd(id, item) {
+        dispatch(addItemCart({id, item}))
+    }
 
         return (
             <>
                 {items.map(item =>(
 
                     <div key={item.id} className="group my-2 flex w-full max-w-xs flex-col overflow-hidden border border-gray-100 bg-white shadow-md">
-                        <NavLink className="relative flex h-60 overflow-hidden" to={`/product/${item.id}`}>
+                        <NavLink className="relative flex h-60 max-[991px]:h-40 overflow-hidden" to={`/product/${item.id}`}>
                             <img
                             className="absolute top-0 right-0 h-full w-full object-contain"
                             src={`data:image/jpg;base64,${item.item_image}`} alt={`${item.item_name}`} 
@@ -27,18 +26,18 @@
                         <div className="mt-4 px-5 pb-5">
 
                             <NavLink to={`/product/${item.id}`}>
-                                <h5 className="text-xl tracking-tight text-slate-900">{item.item_name}</h5>
+                                <h5 className="text-xl font-semibold tracking-tight text-slate-900 max-[991px]:text-md max-[480px]:text-sm">{item.item_name}</h5>
                             </NavLink>
 
                             <div className={`mt-2 ${user?.role ==='user' || user?.role === 'null' ? 'mb-5' : 'mb-2'} flex items-center justify-between`}>
-                                <p className="mr-3 text-sm font-semibold">
+                                <p className="mr-3 text-sm font-semibold max-[480]:text-xs">
                                     <span className="text-xs mr-1 font-normal text-gray-400">INR</span>
                                     {item.item_price}.00
                                     
                                 </p>
                             </div>
                             {(user?.role === "user" || user === null) && ( 
-                                <button  onClick={() => handelAdd(item.id, item)} className="flex items-center justify-center bg-cyan-500 px-2 py-2 font-medium text-sm text-white transition hover:bg-cyan-700 rounded-lg">
+                                <button  onClick={() => handelAdd(item.id, item)} className="flex items-center justify-center bg-cyan-500 px-2 py-2 font-medium text-sm text-white transition hover:bg-cyan-700 rounded-lg reponsive-max-480-button">
                                     <svg
                                         xmlns="http://www.w3.org/2000/svg"
                                         className="mr-2 h-5 w-5"

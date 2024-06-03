@@ -20,7 +20,7 @@ export default function Home() {
       <Corusal imgSrc={images}/>
 
       {(items.length === 0 || !items) && <Loader />}
-      <div className="mt-10 pl-10 grid grid-cols-2 gap-1 sm:grid-cols-4 sm:gap-2 lg:mt-5">
+      <div className="responsive-product">
         {items.length > 0 && <Products items={items}/> }
       </div>
     </>

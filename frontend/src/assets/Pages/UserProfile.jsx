@@ -38,7 +38,7 @@ export default function UserProfile() {
     <>
         {isSubmitting ? <Loader /> : user ?
             
-            <div className="my-4 max-w-screen-md border px-4 shadow-xl sm:mx-4 sm:rounded-xl sm:px-4 sm:py-4 md:mx-auto">
+            <div className="my-4 max-w-screen-md border px-4 shadow-xl sm:mx-4 sm:rounded-xl sm:px-4 sm:py-4 md:mx-auto max-[767px]:max-w-[100px] user-profile">
                 <div className="flex flex-col border-b py-4 sm:flex-row sm:items-start">
                     <div className="shrink-0 mr-auto sm:py-3">
                         <p className="font-medium">Account Details</p>
@@ -82,15 +82,15 @@ export default function UserProfile() {
                             className="w-full rounded-md border bg-white px-2 py-2 outline-none ring-blue-600 focus:ring-1" 
                         />
                     </div>
-                    <div className="flex flex-col border-b py-4 sm:flex-row sm:items-start">
-                        <button onClick={()=> navigate('/')} className="mr-2 hidden rounded-lg border-2 px-4 py-2 font-medium text-gray-500 sm:inline focus:outline-none focus:ring hover:bg-gray-200 hover:text-cyan-500">Cancel</button>
-                        <button type='submit' className="hidden rounded-lg border-2 border-transparent bg-cyan-500 px-4 py-2 font-medium text-white sm:inline focus:outline-none focus:ring hover:bg-cyan-700" disabled={isSubmitting}>
+                    <div className="flex flex-col border-b py-4 sm:flex-row sm:items-start button-max-767">
+                        <button onClick={()=> navigate('/')} className="mr-2 rounded-lg border-2 px-4 py-2 font-medium text-gray-500 sm:inline focus:outline-none focus:ring hover:bg-gray-200 hover:text-cyan-500">Cancel</button>
+                        <button type='submit' className=" rounded-lg border-2 border-transparent bg-cyan-500 px-4 py-2 font-medium text-white sm:inline focus:outline-none focus:ring hover:bg-cyan-700" disabled={isSubmitting}>
                             {isSubmitting ? 'Submit...' : 'Update'}
                         </button>
                     </div>
                 </form>
             </div> 
-            : <div className="my-4 max-w-screen-md border px-4 shadow-xl sm:mx-4 sm:rounded-xl sm:px-4 sm:py-4 md:mx-auto flex items-center justify-center min-h-[620px]">
+            : <div className="my-4 max-w-screen-md border px-4 shadow-xl sm:mx-4 sm:rounded-xl sm:px-4 sm:py-4 md:mx-auto flex items-center justify-center min-h-[620px] ">
             <NavLink to='/login' className='text-xl text-red-500 mt-4'>
             <FontAwesomeIcon icon={faUser}/> <span>Please Login to view details</span></NavLink></div>
         }   

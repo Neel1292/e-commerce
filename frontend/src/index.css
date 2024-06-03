@@ -8,3 +8,135 @@ body {
   box-sizing: border-box;
 }
 
+.responsive-product {
+  margin-top: 10px;
+  padding-left: 10px;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1rem;
+
+
+  @media (min-width: 768px) {
+    grid-template-columns: repeat(4, 1fr);
+    gap: 2rem;
+  }
+
+  @media (max-width: 991px) {
+    padding-left: 15px;
+    padding-right: 15px;
+  }
+
+  @media (max-width: 480px) {
+      grid-template-columns: repeat(1, 1fr);
+      gap: 1rem;
+    
+  }
+}
+
+.add-item{
+
+  @media (max-width: 480px) {
+    position: absolute;
+    left: 2%;
+    font-size: 12px;
+  }
+}
+
+.add-user {
+
+  @media (max-width: 480px) {
+    position: absolute;
+    left: 2%;
+    font-size: 12px;
+  }
+}
+
+@layer utilities {
+
+  @media (max-width: 1240px) {}
+  @media (max-width: 1199px) {}
+  @media (max-width: 991px) {
+
+    .responsive-max-991-menu {
+      position: absolute;
+      background-color: white;
+      right: 0%;
+      top: 100%;
+      z-index: 999;
+    }
+
+    .responsive-max-991-ul {
+      align-items: flex-start;
+      padding-left: 1.5rem;
+      padding-right: 1.5rem
+    }
+
+  }
+
+  @media (max-width: 767px) {
+
+    .user-profile {
+      max-width: none !important;
+      padding: 0 40px;
+    }
+    .button-max-767 {
+      gap: 10px;
+    }
+  }
+
+ 
+  @media (max-width: 480px) {
+    .screen-text {
+      display: block;
+    }
+    
+    .table-responsive {
+      display: block;
+      width: 100%;
+      overflow-x: auto;
+      -webkit-overflow-scrolling: touch;
+    }
+    .table-responsive > table {
+      width: auto;
+      min-width: 100%;
+    }
+    .table-responsive > table > thead > tr > td,
+    .table-responsive > table > tbody > tr > td {
+      white-space: nowrap;
+    }
+  }
+  @media (max-width: 320px) {
+    .form-responsive {
+      padding: 0;
+      max-height: 80vh;
+      overflow-y: auto;
+    }
+    .form-responsive>div {
+      padding: 8px 0;
+    }
+
+    .responsive-button {
+      display: block;
+      margin-right: 0;
+    }
+
+    .user-form-responsive {
+      padding: 0;
+      max-height: 80vh;
+      overflow-y: auto;
+    }
+
+    .user-form-responsive>div {
+      padding: 8px 0;
+    }
+
+    .responsive-button-user {
+      display: block;
+      margin-right: 0;
+    }
+
+    .user-submit {
+      display: block;
+    }
+  }
+}
