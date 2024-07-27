@@ -35,7 +35,7 @@ This E-Commerce project is developed using React for the frontend and Node.js wi
 
 2. **Change to the frontend directory:**
     ```bash
-    cd your-repo-name/frontend
+    cd frontend
     ```
 
 3. **Install frontend dependencies:**
@@ -45,7 +45,7 @@ This E-Commerce project is developed using React for the frontend and Node.js wi
 
 4. **Change to the backend directory:**
     ```bash
-    cd ../backend
+    cd backend
     ```
 
 5. **Install backend dependencies:**
