@@ -70,7 +70,7 @@ This E-Commerce project is developed using React for the frontend and Node.js wi
     ```
 
 ### Configuration
-- Ensure to update the port and URL to your local URL and port in the `.env` file located in the `backend` directory.
+- Ensure to update the port and URL to your local URL and port in the `.env` file located in the `frontend & backend` directory.
 
 ## 🤝 Contribution Guidelines
 
