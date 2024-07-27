@@ -15,21 +15,26 @@ body {
   grid-template-columns: repeat(2, 1fr);
   gap: 1rem;
 
-
-  @media (min-width: 768px) {
-    grid-template-columns: repeat(4, 1fr);
-    gap: 2rem;
+  @media (max-width: 1199px) {
+    padding-left: 10px;
+    padding-right: 10px;
+  }
+  
+  @media (max-width: 991px) {
+    padding-left: 35px;
+    padding-right: 0px;
   }
 
-  @media (max-width: 991px) {
+
+  @media (max-width: 767px) {
     padding-left: 15px;
     padding-right: 15px;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1rem;
   }
 
   @media (max-width: 480px) {
-      grid-template-columns: repeat(1, 1fr);
-      gap: 1rem;
-    
+    grid-template-columns: repeat(1, 1fr);
   }
 }
 

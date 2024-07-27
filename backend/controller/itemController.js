@@ -1,9 +1,26 @@
 const pool = require('../db.js');
-
+const NodeCache = require( "node-cache" );
+const myCache = new NodeCache({ stdTTL: 600, checkperiod: 720 });
+ 
 exports.getAllItems = async(req, res) => {
     try {
-        let items = await pool.query("SELECT id, item_name, item_description, item_price, encode(item_image, 'base64') AS item_image, created_at, seller_name FROM items");
-        res.status(200).json({item: items.rows});
+
+        // Try to get the user from the cache
+        const cachedItems = myCache.get("items");
+        if (cachedItems) {
+            res.status(200).json({item: cachedItems});
+        } else {
+          
+            // If the user is not in the cache, fetch from the database
+
+            let items = await pool.query("SELECT id, item_name, item_description, item_price, encode(item_image, 'base64') AS item_image, created_at, seller_name FROM items");
+            
+            if (items) {
+                // Store the user in the cache before returning
+                myCache.set("items",  items.rows);
+                res.status(200).json({item: items.rows});
+            }
+        }
     } catch (err) {
         res.status(500).json({ error: 'Internal Server Error' });
     }
