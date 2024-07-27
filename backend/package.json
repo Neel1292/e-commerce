@@ -6,7 +6,7 @@
   "scripts": {
     "start": "nodemon index.js"
   },
-  "author": "koshal kumar",
+  "author": "Neel Prajapati",
   "license": "ISC",
   "dependencies": {
     "bcrypt": "^5.1.1",
@@ -20,6 +20,7 @@
     "jsonwebtoken": "^9.0.2",
     "morgan": "^1.10.0",
     "multer": "^1.4.5-lts.1",
+    "node-cache": "^5.1.2",
     "pg": "^8.11.5",
     "stripe": "^15.8.0"
   }
