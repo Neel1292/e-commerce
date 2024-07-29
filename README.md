@@ -30,12 +30,12 @@ This E-Commerce project is developed using React for the frontend and Node.js wi
 
 1. **Clone the repository:**
     ```bash
-    git clone https://github.com/yourusername/your-repo-name.git
+    git clone https://github.com/Neel1292/e-commerce
     ```
 
 2. **Change to the frontend directory:**
     ```bash
-    cd your-repo-name/frontend
+    cd frontend
     ```
 
 3. **Install frontend dependencies:**
@@ -45,7 +45,7 @@ This E-Commerce project is developed using React for the frontend and Node.js wi
 
 4. **Change to the backend directory:**
     ```bash
-    cd ../backend
+    cd backend
     ```
 
 5. **Install backend dependencies:**
@@ -70,7 +70,7 @@ This E-Commerce project is developed using React for the frontend and Node.js wi
     ```
 
 ### Configuration
-- Ensure to update the port and URL to your local URL and port in the `.env` file located in the `backend` directory.
+- Ensure to update the port and URL to your local URL and port in the `.env` file located in the `frontend & backend` directory.
 
 ## 🤝 Contribution Guidelines
 
