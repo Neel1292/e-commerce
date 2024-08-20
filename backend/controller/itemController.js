@@ -3,6 +3,9 @@ const NodeCache = require( "node-cache" );
 const myCache = new NodeCache({ stdTTL: 600, checkperiod: 720 });
  
 exports.getAllItems = async(req, res) => {
+
+    const page = req.query.page || 1;
+    const limit = req.query.page_size || 10;
     try {
 
         // Try to get the user from the cache
@@ -17,7 +20,7 @@ exports.getAllItems = async(req, res) => {
             
             if (items) {
                 // Store the user in the cache before returning
-                myCache.set("items",  items.rows);
+                myCache.set("items", items.rows);
                 res.status(200).json({item: items.rows});
             }
         }

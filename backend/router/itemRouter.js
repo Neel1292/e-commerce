@@ -6,7 +6,7 @@ const express = require('express'),
 const { authUser } = require('../middleware/authToken.js')
 
 const storage = multer.memoryStorage();
-const upload = multer({ storage: storage });
+const upload = multer({ storage: storage });    
 
 router.get('/', itemController.getAllItems);
 router.get('/:id', itemController.getOneItem);

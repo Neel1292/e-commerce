@@ -62,7 +62,7 @@ const itemSlice = createSlice({
 
 export const getItemsAsync = () => async (dispatch) => {
     try {
-        const response = await axios.get(`${import.meta.env.VITE_BACKEND_URL_PRODUCTION}/item`);
+        const response = await axios.get(`${import.meta.env.VITE_BACKEND_URL}/item`);
         if (response.status === 200) {
 
             dispatch(getItems(response.data.item));
@@ -78,7 +78,7 @@ export const getOneItemAsync = id => async(dispatch) => {
     dispatch(clearOneItem());
     try {
         const token = getToken();
-        const response = await axios.get(`${import.meta.env.VITE_BACKEND_URL_PRODUCTION}/item/${id}`, {
+        const response = await axios.get(`${import.meta.env.VITE_BACKEND_URL}/item/${id}`, {
             headers: {
                 Authorization: `Bearer ${token}`,
             },
@@ -95,7 +95,7 @@ export const addOneItemAsync = item => async(dispatch) => {
     try{
         const token = getToken();
               
-        const response = await axios.post(`${import.meta.env.VITE_BACKEND_URL_PRODUCTION}/item/add`, item, {
+        const response = await axios.post(`${import.meta.env.VITE_BACKEND_URL}/item/add`, item, {
             headers: {
                 Authorization: `Bearer ${token}`,
             },
@@ -115,7 +115,7 @@ export const addOneItemAsync = item => async(dispatch) => {
 export const updateOneItemAsync = (id, item) => async(dispatch) => { 
     try{
         const token = getToken();
-        const response = await axios.post(`${import.meta.env.VITE_BACKEND_URL_PRODUCTION}/item/edit/${id}`, item, {
+        const response = await axios.post(`${import.meta.env.VITE_BACKEND_URL}/item/edit/${id}`, item, {
             headers: {
                 Authorization: `Bearer ${token}`,
             },
@@ -132,7 +132,7 @@ export const updateOneItemAsync = (id, item) => async(dispatch) => {
 export const deleteOneItemAsync = (id) => async(dispatch) => {   
     try{
         const token = getToken();
-        const response = await axios.delete(`${import.meta.env.VITE_BACKEND_URL_PRODUCTION}/item/delete/${id}`, {
+        const response = await axios.delete(`${import.meta.env.VITE_BACKEND_URL}/item/delete/${id}`, {
             headers: {
                 Authorization: `Bearer ${token}`,
             },

@@ -101,7 +101,7 @@ const userSlice = createSlice({
 export const updateUserAsync = (id, user, token) => async dispatch => {
     try {
         
-        const response = await axios.post(`${import.meta.env.VITE_BACKEND_URL_PRODUCTION}/user/edit/${id}`, user, {
+        const response = await axios.post(`${import.meta.env.VITE_BACKEND_URL}/user/edit/${id}`, user, {
             headers: {
                 Authorization: `Bearer ${token}`
             }
@@ -121,7 +121,7 @@ export const updateUserAsync = (id, user, token) => async dispatch => {
 
 export const loginUserAsync = (user) => async dispatch => {
     try {
-        const response = await axios.post(`${import.meta.env.VITE_BACKEND_URL_PRODUCTION}/user/login`, user);
+        const response = await axios.post(`${import.meta.env.VITE_BACKEND_URL}/user/login`, user);
         if (response.status === 200) {
             const { token, user } = response.data;
             localStorage.setItem('token', token);
@@ -136,7 +136,7 @@ export const loginUserAsync = (user) => async dispatch => {
 
 export const createUserAsync = (user) => async dispatch => {
     try {    
-        const response = await axios.post(`${import.meta.env.VITE_BACKEND_URL_PRODUCTION}/user/signup`, user);
+        const response = await axios.post(`${import.meta.env.VITE_BACKEND_URL}/user/signup`, user);
         if (response.status === 200) {
             const { token, user } = response.data;
             localStorage.setItem('token', token);
@@ -153,7 +153,7 @@ export const createUserAsync = (user) => async dispatch => {
 export const createOneUserAsync = (user) => async dispatch => {
     try {
         let token = getToken();
-        const response = await axios.post(`${import.meta.env.VITE_BACKEND_URL_PRODUCTION}/user/add`, user, {
+        const response = await axios.post(`${import.meta.env.VITE_BACKEND_URL}/user/add`, user, {
             headers: {
                 Authorization: `Bearer ${token}`
             }
@@ -172,7 +172,7 @@ export const getUsersAsync = () => async dispatch => {
     
     try {   
         let token = getToken();
-        const response = await axios.get(`${import.meta.env.VITE_BACKEND_URL_PRODUCTION}/user/all`, {
+        const response = await axios.get(`${import.meta.env.VITE_BACKEND_URL}/user/all`, {
             headers: {
                 Authorization: `Bearer ${token}`
             }
@@ -192,7 +192,7 @@ export const getUsersAsync = () => async dispatch => {
 export const updateOneUserAsync = (id, user) => async(dispatch) => {
     try{
         const token = getToken();
-        const response = await axios.post(`${import.meta.env.VITE_BACKEND_URL_PRODUCTION}/user/edit/${id}`, user, {
+        const response = await axios.post(`${import.meta.env.VITE_BACKEND_URL}/user/edit/${id}`, user, {
             headers: {
                 Authorization: `Bearer ${token}`,
             },
@@ -210,7 +210,7 @@ export const deleteOneUserAsync = (id) => async(dispatch) => {
         
     try{
         const token = getToken();
-        const response = await axios.delete(`${import.meta.env.VITE_BACKEND_URL_PRODUCTION}/user/delete/${id}`, {
+        const response = await axios.delete(`${import.meta.env.VITE_BACKEND_URL}/user/delete/${id}`, {
             headers: {
                 Authorization: `Bearer ${token}`,
             },
@@ -225,12 +225,12 @@ export const deleteOneUserAsync = (id) => async(dispatch) => {
     }
 }
 
-export const { loginStart, loginSuccess, loginFailure, logoutUser } = userSlice.actions;
-export const { getAllUsers } = userSlice.actions;
-export const { newUser } = userSlice.actions;
-export const { getSelectedUser, updateSelectedUser, clearOneUser } = userSlice.actions;
-export const { createUser } = userSlice.actions;
-export const { updateUser, updateSuccess, updateFailure } = userSlice.actions;
-export const { deleteUser } = userSlice.actions;
+export const { loginStart, loginSuccess, loginFailure, logoutUser,
+    getAllUsers,
+    newUser, 
+    getSelectedUser, updateSelectedUser, clearOneUser,
+    createUser, 
+    updateUser, updateSuccess, updateFailure,
+    deleteUser } = userSlice.actions;
 
 export default userSlice.reducer;

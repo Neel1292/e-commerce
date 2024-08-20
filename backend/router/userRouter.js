@@ -14,7 +14,7 @@ router.post('/edit/:id', authUser, userController.update);
 router.post('/add', authUser, userController.addUser);
 router.delete('/delete/:id', authUser, userController.deleteUser);
 
-// paymetn gateway
+// payment gateway
 router.post('/checkout', authUser, paymentController.checkOut);
 
 module.exports = router;

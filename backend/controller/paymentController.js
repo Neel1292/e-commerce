@@ -21,8 +21,8 @@ exports.checkOut = async (req, res) => {
         shipping_address_collection: {allowed_countries: ['IN', 'US', 'CA', 'GB', 'AU']},
         line_items: lineItems,
         mode: "payment",
-        success_url: `${process.env.FRONTEND_BASE_URL_PRODUCTION}/success`,
-        cancel_url:  `${process.env.FRONTEND_BASE_URL_PRODUCTION}/cancel`
+        success_url: `${process.env.FRONTEND_DEV_BASE_URL}/success`,
+        cancel_url:  `${process.env.FRONTEND_DEV_BASE_URL}/cancel`
     });
 
     res.status(201).json({ id: session.id });
