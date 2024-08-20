@@ -8,8 +8,8 @@ function RootLayout() {
     <>
       <ToastContainer
         position="top-center"
-        autoClose={2000}
-        hideProgressBar={false}
+        autoClose={500}
+        hideProgressBar={true}
         newestOnTop={false}
         stacked={true}
         closeOnClick
@@ -19,7 +19,7 @@ function RootLayout() {
         draggable
         pauseOnHover
         theme="light"
-        transition: Bounce
+        transition: Flip
       />
       <MainNavigation />
       <main>

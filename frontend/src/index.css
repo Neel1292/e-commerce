@@ -10,10 +10,10 @@ body {
 
 .responsive-product {
   margin-top: 10px;
-  padding-left: 10px;
+  padding-left: 45px;
   display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 1rem;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 0.5rem;
 
   @media (max-width: 1199px) {
     padding-left: 10px;

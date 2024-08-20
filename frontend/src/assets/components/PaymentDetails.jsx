@@ -5,7 +5,7 @@ import getToken from "../../utils/getToken";
 import { useNavigate } from "react-router";
 import { useEffect } from "react";
 
-export default function PaymentDetails({total, shipping}) {
+export default function PaymentDetails({total, shipping = 49 }) {
 
     const carts = useSelector((state) => state.carts?.cartItems) || [];
     const navigate = useNavigate();

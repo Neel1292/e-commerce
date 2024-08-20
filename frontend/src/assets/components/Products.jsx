@@ -16,7 +16,7 @@ export default function Products({ items }) {
             <>
                 {items.map(item =>(
 
-                    <div key={item.id} className="group my-2 flex w-full max-w-xs flex-col overflow-hidden border border-gray-100 bg-white shadow-md">
+                    <div key={item.id} className="group mb-5 flex w-full max-w-xs flex-col overflow-hidden border border-gray-100 bg-white shadow-md">
                         <NavLink className="relative flex h-60 max-[991px]:h-40 overflow-hidden" to={`/product/${item.id}`}>
                             <img
                             className="absolute top-0 right-0 h-full w-full object-contain"

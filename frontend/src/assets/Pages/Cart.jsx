@@ -14,7 +14,7 @@ import { faCartShopping } from '@fortawesome/free-solid-svg-icons';
 
     return (
     <>
-        <section className="min-h-[660px] bg-gray-100 py-10 sm:py-16 lg:py-2">
+        <section className="h-screen bg-gray-100 py-10 sm:py-16 lg:py-2">
             <div className="mx-auto px-4 sm:px-6 lg:px-8">
                 <div className="flex items-center justify-center border-b">
                     <h1 className="text-2xl mt-1 py-2 font-semibold text-gray-900">Shopping Cart</h1>
